@@ -1,2 +1,8 @@
 create function of random choice of "paper", "rock" or "scissors" as computer player, getComputerChoice.
 Function returning paper || rock || scissors.
+
+Player choice
+ask for paper rock or scissors in prompt - check if input is correct - case insensitive
+make toUpperCase (only three english words).
+if input is correct return input as final of getplayerSelection 
+
