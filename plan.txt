@@ -1,0 +1,2 @@
+create function of random choice of "paper", "rock" or "scissors" as computer player, getComputerChoice.
+Function returning paper || rock || scissors.
