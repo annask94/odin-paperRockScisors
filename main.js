@@ -7,12 +7,10 @@ let getComputerChoice = () => {
 
 // Player choice
 
-let getPlayerChoice = prompt("What is your choice? Paper, Rock or Scissors");
-
 function playerSelection(choice) {
-  let getPlayerChoice = prompt("What is your choice? Paper, Rock or Scissors");
-
-  let choice = getPlayerChoice.toUpperCase;
+  let choice = prompt(
+    "What is your choice? Paper, Rock or Scissors"
+  ).toUpperCase;
   switch (choice) {
     case "PAPER":
       return "Paper";
@@ -24,9 +22,29 @@ function playerSelection(choice) {
       return "Scissors";
       break;
     default:
-      return "Wrong choice, try again";
+      return "Wrong";
       break;
   }
 }
 
-console.log(playerSelection());
+// GAME
+
+function playRound(playerSelection, getComputerChoice) {
+  if (playerSelection === getComputerChoice) {
+    return("Deaw!"); 
+  } else if (playerSelection === "Paper" && getComputerChoice === "Rock") {
+    return(You won! Paper beats Rock);
+  } else if (playerSelection === "Paper" && getComputerChoice === "Scissors") {
+    return(You lose! Scissors beats Paper);
+  } else if (playerSelection === "Rock" && getComputerChoice === "Paper") {
+    return(You lose! Paper beats Rock);
+  } else if (playerSelection === "Rock" && getComputerChoice === "Scissors") {
+    return(You win! Rock beats Scissors);
+  } else if (playerSelection === "Scissors" && getComputerChoice === "Paper") {
+    return(You win! Scissors beats Paper);
+  } else if (playerSelection === "Scissors" && getComputerChoice === "Rock") {
+    return(You lose! Rock beats Scissors);
+  } else {
+    alert("Wrong choice, try again");
+  } 
+}
