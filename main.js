@@ -5,9 +5,20 @@ function getComputerChoice() {
 }
 
 // Player choice
-let playerSelection = prompt(
-  "What is your choice? Paper, Rock or Scissors"
-).toLowerCase();
+function playerSelection() {
+  let playerInput = prompt(
+    "What is your choice? Paper, Rock or Scissors"
+  ).toLowerCase();
+  if (
+    playerInput === "paper" ||
+    playerInput === "rock" ||
+    playerInput === "scissors"
+  ) {
+    return playerInput;
+  } else {
+    alert("Wrong input! Try again");
+  }
+}
 
 // GAME
 
@@ -19,26 +30,40 @@ let computerScore = 0;
 // SINGLE ROUND
 
 function winnerCase(a, b) {
-  let playerChoice = playerSelection;
+  let playerChoice = playerSelection();
   let computerChoice = getComputerChoice();
   if (playerChoice == computerChoice) {
-    return "Deaw!";
+    let winner = "Tie game!";
+    let result = {
+      winner: winner,
+      computer: computerScore,
+      compChoice: computerChoice,
+      player: playerScore,
+      plaChoice: playerChoice,
+    };
+    return result;
   } else if (
     (playerChoice == "paper" && computerChoice == "rock") ||
     (playerChoice == "rock" && computerChoice == "scissors") ||
     (playerChoice == "scissors" && computerChoice == "paper")
   ) {
-    playerScore++;
     let winner = "player";
-    return { winner: winner, computer: computerScore, player: playerScore };
+    return winner;
   } else {
-    computerScore++;
     let winner = "computer";
-    return { winner: winner, computer: computerScore, player: playerScore };
+    return winner;
   }
 }
 
-// PLAY 5 ROUNDS
+// PLAY  ROUND
+
+function playRound() {
+  let round = 5;
+  for (i = 0; i < 5; i++) {
+    let match = winnerCase(playerSelection(), getComputerChoice());
+    return { round: round, match: match };
+  }
+}
 
 // LOOP
 
@@ -48,4 +73,4 @@ function winnerCase(a, b) {
 //   }
 // }
 
-console.log(winnerCase(playerSelection, getComputerChoice()));
+console.log(playRound());
