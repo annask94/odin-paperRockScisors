@@ -8,28 +8,44 @@ function getComputerChoice() {
 let playerSelection = prompt(
   "What is your choice? Paper, Rock or Scissors"
 ).toLowerCase();
+
 // GAME
 
-function playRound(a, b) {
+// SCORES
+
+let playerScore = 0;
+let computerScore = 0;
+
+// SINGLE ROUND
+
+function winnerCase(a, b) {
   let playerChoice = playerSelection;
   let computerChoice = getComputerChoice();
   if (playerChoice == computerChoice) {
     return "Deaw!";
-  } else if (playerChoice == "paper" && computerChoice == "rock") {
-    return "You won! paper beats rock";
-  } else if (playerChoice == "paper" && computerChoice == "scissors") {
-    return "You lose! scissors beats paper";
-  } else if (playerChoice == "rock" && computerChoice == "paper") {
-    return "You lose! paper beats rock";
-  } else if (playerChoice == "rock" && computerChoice == "scissors") {
-    return "You win! rock beats scissors";
-  } else if (playerChoice == "scissors" && computerChoice == "paper") {
-    return "You win! scissors beats paper";
-  } else if (playerChoice == "scissors" && computerChoice == "rock") {
-    return "You lose! rock beats scissors";
+  } else if (
+    (playerChoice == "paper" && computerChoice == "rock") ||
+    (playerChoice == "rock" && computerChoice == "scissors") ||
+    (playerChoice == "scissors" && computerChoice == "paper")
+  ) {
+    playerScore++;
+    let winner = "player";
+    return { winner: winner, computer: computerScore, player: playerScore };
   } else {
-    alert("Wrong choice, try again");
+    computerScore++;
+    let winner = "computer";
+    return { winner: winner, computer: computerScore, player: playerScore };
   }
 }
 
-console.log(playRound(playerSelection, getComputerChoice));
+// PLAY 5 ROUNDS
+
+// LOOP
+
+// function game() {
+//   for (let i = 0; i < 5; i++) {
+//     playRound(i);
+//   }
+// }
+
+console.log(winnerCase(playerSelection, getComputerChoice()));

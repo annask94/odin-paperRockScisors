@@ -15,4 +15,9 @@ computerScore = 0
 game() {
     loop to iterate round 5 times
     if compChoice = playerChoice
+    gisplay draw
+    if computerChoice = computerChoice
+    now all the posiibilities of comp winnig ++computerScore
+    else ++playerScore
+    comunicats of winnig or losing each round
 }
