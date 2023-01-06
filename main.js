@@ -1,30 +1,32 @@
 // Computer choice
 function getComputerChoice() {
-  const variants = ["PAPER", "ROCK", "SCISSORS"];
+  const variants = ["paper", "rock", "scissors"];
   return variants[Math.floor(Math.random() * variants.length)];
 }
 
 // Player choice
-let playerSelection = prompt("What is your choice? Paper, Rock or Scissors");
+let playerSelection = prompt(
+  "What is your choice? Paper, Rock or Scissors"
+).toLowerCase();
 // GAME
 
 function playRound(a, b) {
-  let playerChoice = playerSelection.toUpperCase();
+  let playerChoice = playerSelection;
   let computerChoice = getComputerChoice();
   if (playerChoice == computerChoice) {
     return "Deaw!";
-  } else if (playerChoice == "PAPER" && computerChoice == "ROCK") {
-    return "You won! PAPER beats ROCK";
-  } else if (playerChoice == "PAPER" && computerChoice == "SCISSORS") {
-    return "You lose! SCISSORS beats PAPER";
-  } else if (playerChoice == "ROCK" && computerChoice == "PAPER") {
-    return "You lose! PAPER beats ROCK";
-  } else if (playerChoice == "ROCK" && computerChoice == "SCISSORS") {
-    return "You win! ROCK beats SCISSORS";
-  } else if (playerChoice == "SCISSORS" && computerChoice == "PAPER") {
-    return "You win! SCISSORS beats PAPER";
-  } else if (playerChoice == "SCISSORS" && computerChoice == "ROCK") {
-    return "You lose! ROCK beats SCISSORS";
+  } else if (playerChoice == "paper" && computerChoice == "rock") {
+    return "You won! paper beats rock";
+  } else if (playerChoice == "paper" && computerChoice == "scissors") {
+    return "You lose! scissors beats paper";
+  } else if (playerChoice == "rock" && computerChoice == "paper") {
+    return "You lose! paper beats rock";
+  } else if (playerChoice == "rock" && computerChoice == "scissors") {
+    return "You win! rock beats scissors";
+  } else if (playerChoice == "scissors" && computerChoice == "paper") {
+    return "You win! scissors beats paper";
+  } else if (playerChoice == "scissors" && computerChoice == "rock") {
+    return "You lose! rock beats scissors";
   } else {
     alert("Wrong choice, try again");
   }
