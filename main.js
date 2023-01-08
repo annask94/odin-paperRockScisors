@@ -29,17 +29,16 @@ let computerScore = 0;
 
 // SINGLE ROUND
 
-function winnerCase(a, b) {
+function playRound(i) {
   let playerChoice = playerSelection();
   let computerChoice = getComputerChoice();
   if (playerChoice == computerChoice) {
-    let winner = "Tie game!";
     let result = {
-      winner: winner,
-      computer: computerScore,
-      compChoice: computerChoice,
-      player: playerScore,
-      plaChoice: playerChoice,
+      winner: "Tie game!",
+      playerChoice: playerChoice,
+      playerScore: playerScore,
+      computerChoice: computerChoice,
+      computerScore: computerScore,
     };
     return result;
   } else if (
@@ -47,30 +46,41 @@ function winnerCase(a, b) {
     (playerChoice == "rock" && computerChoice == "scissors") ||
     (playerChoice == "scissors" && computerChoice == "paper")
   ) {
-    let winner = "player";
-    return winner;
+    playerScore++;
+    let result = {
+      winner: "player",
+      playerChoice: playerChoice,
+      playerScore: playerScore,
+      computerChoice: computerChoice,
+      computerScore: computerScore,
+    };
+    return result;
   } else {
-    let winner = "computer";
-    return winner;
+    computerScore++;
+    let result = {
+      winner: "computer",
+      playerChoice: playerChoice,
+      playerScore: playerScore,
+      computerChoice: computerChoice,
+      computerScore: computerScore,
+    };
+    return result;
   }
 }
 
-// PLAY  ROUND
+// PLAY 5 ROUNDS
 
-function playRound() {
-  let round = 5;
-  for (i = 0; i < 5; i++) {
-    let match = winnerCase(playerSelection(), getComputerChoice());
-    return { round: round, match: match };
+function game() {
+  for (let i = 0; i < 5; i++) {
+    console.log(playRound(i));
+  }
+  if (playerScore == computerScore) {
+    console.log("Tie game!");
+  } else if (playerScore > computerScore) {
+    console.log("Congratulations! You won!");
+  } else {
+    console.log("You lose. Maybe next time!");
   }
 }
 
-// LOOP
-
-// function game() {
-//   for (let i = 0; i < 5; i++) {
-//     playRound(i);
-//   }
-// }
-
-console.log(playRound());
+console.log(game());
