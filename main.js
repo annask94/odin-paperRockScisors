@@ -5,20 +5,22 @@ function getComputerChoice() {
 }
 
 // Player choice
-function playerSelection() {
-  let playerInput = prompt(
-    "What is your choice? Paper, Rock or Scissors"
-  ).toLowerCase();
-  if (
-    playerInput === "paper" ||
-    playerInput === "rock" ||
-    playerInput === "scissors"
-  ) {
-    return playerInput;
-  } else {
-    alert("Wrong input! Try again");
-  }
-}
+// Selectors
+// Event listeners
+// function playerSelection() {
+//   let playerInput = prompt(
+//     "What is your choice? Paper, Rock or Scissors"
+//   ).toLowerCase();
+//   if (
+//     playerInput === "paper" ||
+//     playerInput === "rock" ||
+//     playerInput === "scissors"
+//   ) {
+//     return playerInput;
+//   } else {
+//     alert("Wrong input! Try again");
+//   }
+// }
 
 // GAME
 
