@@ -10,20 +10,38 @@
   <body>
     <main>
       <h1>What is your choice?</h1>
-      <button type="button" class="rock">Rock</button>
-      <button type="button" class="paper">Paper</button>
-      <button type="button" class="Scissors">Scissors</button>
-      <section class="roundWinner">
-        <h2 class="roundChoice">paper vs scissors</h2>
-        <p class="roundSummary">You lose!</p>
+      <button type="button" class="rps_btn" data-name="rock">
+        <img
+          src="images/rock.png"
+          alt="rock gesture from rock, paper and scrissors game"
+          class="rock_icon"
+        />
+      </button>
+      <button type="button" class="rps_btn" data-name="paper">
+        <img
+          src="images/paper.png"
+          alt="paper gesture from rock, paper and scrissors game"
+          class="paper"
+        />
+      </button>
+      <button type="button" class="rps_btn" data-name="scissors">
+        <img
+          src="images/scissors.png"
+          alt="scissors gesture from rock, paper and scrissors game"
+          class="paper"
+        />
+      </button>
+      <section class="round_summary">
+        <h2 class="round_choice">paper vs scissors</h2>
+        <p class="round_winner">You lose!</p>
       </section>
       <section class="score">
-        <div class="playerScore">3</div>
-        <div class="computerScore">2</div>
+        <div class="player_score">3</div>
+        <div class="computer_score">2</div>
       </section>
     </main>
-    <section class="endPopup">
-      <h2 class="endResult">Congratulations! You won!</h2>
+    <section class="end_popup">
+      <h2 class="end_result">Congratulations! You won!</h2>
     </section>
   </body>
   <script src="main.js"></script>

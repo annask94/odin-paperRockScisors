@@ -1,88 +1,61 @@
+let playerScore = 0;
+let computerScore = 0;
+
+//Player Choice
+
+const rpsButtons = document.querySelectorAll(".rps_btn");
+
+rpsButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const playerChoice = button.getAttribute("data-name");
+    const roundResult = playRound(playerChoice);
+    console.log("Wynik rundy: ", roundResult);
+  });
+});
+
 // Computer choice
 function getComputerChoice() {
   const variants = ["paper", "rock", "scissors"];
   return variants[Math.floor(Math.random() * variants.length)];
 }
 
-// Player choice
-// Selectors
-// Event listeners
-// function playerSelection() {
-//   let playerInput = prompt(
-//     "What is your choice? Paper, Rock or Scissors"
-//   ).toLowerCase();
-//   if (
-//     playerInput === "paper" ||
-//     playerInput === "rock" ||
-//     playerInput === "scissors"
-//   ) {
-//     return playerInput;
-//   } else {
-//     alert("Wrong input! Try again");
-//   }
-// }
-
 // GAME
-
-// SCORES
-
-let playerScore = 0;
-let computerScore = 0;
 
 // SINGLE ROUND
 
-function playRound(i) {
-  let playerChoice = playerSelection();
-  let computerChoice = getComputerChoice();
+function playRound(playerChoice) {
+  const computerChoice = getComputerChoice();
   if (playerChoice == computerChoice) {
-    let result = {
+    return {
       winner: "Tie game!",
       playerChoice: playerChoice,
       playerScore: playerScore,
       computerChoice: computerChoice,
       computerScore: computerScore,
     };
-    return result;
   } else if (
     (playerChoice == "paper" && computerChoice == "rock") ||
     (playerChoice == "rock" && computerChoice == "scissors") ||
     (playerChoice == "scissors" && computerChoice == "paper")
   ) {
     playerScore++;
-    let result = {
+    return {
       winner: "player",
       playerChoice: playerChoice,
       playerScore: playerScore,
       computerChoice: computerChoice,
       computerScore: computerScore,
     };
-    return result;
   } else {
     computerScore++;
-    let result = {
+    return {
       winner: "computer",
       playerChoice: playerChoice,
       playerScore: playerScore,
       computerChoice: computerChoice,
       computerScore: computerScore,
     };
-    return result;
   }
 }
 
 // PLAY 5 ROUNDS
-
-function game() {
-  for (let i = 0; i < 5; i++) {
-    console.log(playRound(i));
-  }
-  if (playerScore == computerScore) {
-    console.log("Tie game!");
-  } else if (playerScore > computerScore) {
-    console.log("Congratulations! You won!");
-  } else {
-    console.log("You lose. Maybe next time!");
-  }
-}
-
-console.log(game());
