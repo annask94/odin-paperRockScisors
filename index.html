@@ -9,36 +9,42 @@
   </head>
   <body>
     <main>
-      <h1>What is your choice?</h1>
-      <button type="button" class="rps_btn" data-name="rock">
-        <img
-          src="images/rock.png"
-          alt="rock gesture from rock, paper and scrissors game"
-          class="rock_icon"
-        />
-      </button>
-      <button type="button" class="rps_btn" data-name="paper">
-        <img
-          src="images/paper.png"
-          alt="paper gesture from rock, paper and scrissors game"
-          class="paper"
-        />
-      </button>
-      <button type="button" class="rps_btn" data-name="scissors">
-        <img
-          src="images/scissors.png"
-          alt="scissors gesture from rock, paper and scrissors game"
-          class="paper"
-        />
-      </button>
-      <section class="round_summary">
-        <h2 class="round_choice">paper vs scissors</h2>
-        <p class="round_winner">You lose!</p>
-      </section>
-      <section class="score">
-        <div class="player_score">3</div>
-        <div class="computer_score">2</div>
-      </section>
+      <div class="container">
+        <h1>What is your choice?</h1>
+        <section class="play_btn">
+          <button type="button" class="rps_btn" data-name="rock">
+            <img
+              src="images/rock.png"
+              alt="rock gesture from rock, paper and scrissors game"
+              class="rock_icon"
+            />
+          </button>
+          <button type="button" class="rps_btn" data-name="paper">
+            <img
+              src="images/paper.png"
+              alt="paper gesture from rock, paper and scrissors game"
+              class="paper"
+            />
+          </button>
+          <button type="button" class="rps_btn" data-name="scissors">
+            <img
+              src="images/scissors.png"
+              alt="scissors gesture from rock, paper and scrissors game"
+              class="paper"
+            />
+          </button>
+        </section>
+        <section class="game_stats">
+          <div class="match">
+            <p>computer</p>
+            <h2 class="round_choice">paper vs scissors</h2>
+            <p>player</p>
+          </div>
+          <p class="round_winner">You lose!</p>
+          <div class="player_score">Computer 3</div>
+          <div class="computer_score">Player 2</div>
+        </section>
+      </div>
     </main>
     <section class="end_popup">
       <h2 class="end_result">Congratulations! You won!</h2>
