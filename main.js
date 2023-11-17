@@ -9,11 +9,11 @@ rpsButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const playerChoice = button.getAttribute("data-name");
     const roundResult = playRound(playerChoice);
-    console.log("Wynik rundy: ", roundResult);
+    // console.log("Wynik rundy: ", roundResult);
   });
 });
 
-// Computer choice
+// COMPUTER CHOICE
 function getComputerChoice() {
   const variants = ["paper", "rock", "scissors"];
   return variants[Math.floor(Math.random() * variants.length)];
@@ -25,37 +25,52 @@ function getComputerChoice() {
 
 function playRound(playerChoice) {
   const computerChoice = getComputerChoice();
+  let result = {
+    roundWinner: "",
+    playerChoice: playerChoice,
+    playerScore: "0",
+    computerChoice: computerChoice,
+    computerScore: "0",
+  };
   if (playerChoice == computerChoice) {
-    return {
-      winner: "Tie game!",
-      playerChoice: playerChoice,
-      playerScore: playerScore,
-      computerChoice: computerChoice,
-      computerScore: computerScore,
-    };
+    result.roundWinner = "Tie game!";
   } else if (
     (playerChoice == "paper" && computerChoice == "rock") ||
     (playerChoice == "rock" && computerChoice == "scissors") ||
     (playerChoice == "scissors" && computerChoice == "paper")
   ) {
-    playerScore++;
-    return {
-      winner: "player",
-      playerChoice: playerChoice,
-      playerScore: playerScore,
-      computerChoice: computerChoice,
-      computerScore: computerScore,
-    };
+    result.playerScore++;
+    result.roundWinner = "You won!";
   } else {
-    computerScore++;
-    return {
-      winner: "computer",
-      playerChoice: playerChoice,
-      playerScore: playerScore,
-      computerChoice: computerChoice,
-      computerScore: computerScore,
-    };
+    result.computerScore++;
+    result.roundWinner = "You lost!";
   }
+  updateGameStats(result);
+}
+
+//STATS DISPLAY
+function updateGameStats(result) {
+  const playerChoiceDisplay = document.querySelector(
+    '[data-name="playerChoiceDisplay"]'
+  );
+  const computerChoiceDisplay = document.querySelector(
+    '[data-name="computerChoiceDisplay"]'
+  );
+  const roundWinnerDisplay = document.querySelector(
+    '[data-name="roundWinner"]'
+  );
+  const playerScoreDisplay = document.querySelector(
+    '[data-name="playerScoreDisplay"]'
+  );
+  const computerScoreDisplay = document.querySelector(
+    '[data-name="computerScoreDisplay"]'
+  );
+
+  playerChoiceDisplay.textContent = result.playerChoice;
+  computerChoiceDisplay.textContent = result.computerChoice;
+  roundWinnerDisplay.textContent = result.roundWinner;
+  playerScoreDisplay.textContent = result.playerScore;
+  computerScoreDisplay.textContent = result.computerScore;
 }
 
 // PLAY 5 ROUNDS

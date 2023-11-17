@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -35,14 +41,23 @@
           </button>
         </section>
         <section class="game_stats">
-          <div class="match">
-            <p>computer</p>
-            <h2 class="round_choice">paper vs scissors</h2>
-            <p>player</p>
-          </div>
-          <p class="round_winner">You lose!</p>
-          <div class="player_score">Computer 3</div>
-          <div class="computer_score">Player 2</div>
+          <h2 class="round_choice">
+            <span
+              class="round_choice_dynamic"
+              data-name="playerChoiceDisplay"
+            ></span
+            >vs<span
+              class="round_choice_dynamic"
+              data-name="computerChoiceDisplay"
+            ></span>
+          </h2>
+          <h3 class="round_winner" data-name="roundWinner"></h3>
+          <p class="score_display">score</p>
+          <p class="score_text">
+            YOU<span class="game_score" data-name="playerScoreDisplay"></span
+            ><span class="game_score" data-name="computerScoreDisplay"></span
+            >BOT
+          </p>
         </section>
       </div>
     </main>
