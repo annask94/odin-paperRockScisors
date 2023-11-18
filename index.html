@@ -14,9 +14,13 @@
     <title>Document</title>
   </head>
   <body>
-    <main>
-      <div class="container">
-        <h1>What is your choice?</h1>
+    <div class="grid_container">
+      <header>
+        <h1>ROCK PAPER SCISSORS</h1>
+        <h2 class="title_header">play 5 rounds</h2>
+      </header>
+      <main>
+        <h2>What is your choice?</h2>
         <section class="play_btn">
           <button type="button" class="rps_btn" data-name="rock">
             <img
@@ -59,10 +63,11 @@
             >BOT
           </p>
         </section>
-      </div>
-    </main>
+      </main>
+    </div>
     <section class="end_popup">
-      <h2 class="end_result">Congratulations! You won!</h2>
+      <h2 class="end_result" data-name="gameWinner"></h2>
+      <button type="button" class="retry_btn">PLAY AGAIN</button>
     </section>
   </body>
   <script src="main.js"></script>

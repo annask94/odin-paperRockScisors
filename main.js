@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+const MAX_SCORE = 5;
 
 //Player Choice
 
@@ -28,9 +29,9 @@ function playRound(playerChoice) {
   let result = {
     roundWinner: "",
     playerChoice: playerChoice,
-    playerScore: "0",
+    playerScore: playerScore,
     computerChoice: computerChoice,
-    computerScore: "0",
+    computerScore: computerScore,
   };
   if (playerChoice == computerChoice) {
     result.roundWinner = "Tie game!";
@@ -39,13 +40,17 @@ function playRound(playerChoice) {
     (playerChoice == "rock" && computerChoice == "scissors") ||
     (playerChoice == "scissors" && computerChoice == "paper")
   ) {
-    result.playerScore++;
     result.roundWinner = "You won!";
+    playerScore++;
   } else {
-    result.computerScore++;
     result.roundWinner = "You lost!";
+    computerScore++;
   }
   updateGameStats(result);
+
+  if (playerScore === MAX_SCORE || computerScore === MAX_SCORE) {
+    displayWinner();
+  }
 }
 
 //STATS DISPLAY
@@ -69,8 +74,24 @@ function updateGameStats(result) {
   playerChoiceDisplay.textContent = result.playerChoice;
   computerChoiceDisplay.textContent = result.computerChoice;
   roundWinnerDisplay.textContent = result.roundWinner;
-  playerScoreDisplay.textContent = result.playerScore;
-  computerScoreDisplay.textContent = result.computerScore;
+  playerScoreDisplay.textContent = playerScore;
+  computerScoreDisplay.textContent = computerScore;
+
+  if (result.playerScore === MAX_SCORE || result.computerScore === MAX_SCORE) {
+    displayWinner();
+  }
 }
 
-// PLAY 5 ROUNDS
+function displayWinner() {
+  const gameWinnerDisplay = document.querySelector('[data-name="gameWinner"]');
+  const endPopup = document.querySelector(".end_popup");
+
+  // Determine the winner based on scores
+  if (playerScore === MAX_SCORE) {
+    gameWinnerDisplay.textContent = "Congratulations! You won!";
+  } else if (computerScore === MAX_SCORE) {
+    gameWinnerDisplay.textContent = "You lose";
+  }
+}
+
+//DOPISAĆ FUNKCJĘ ZE ZMIANĄ STYLU I DOGRAĆ WYGLĄD MOBILNY
