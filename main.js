@@ -84,7 +84,7 @@ function updateGameStats(result) {
 
 function displayWinner() {
   const gameWinnerDisplay = document.querySelector('[data-name="gameWinner"]');
-  const endPopup = document.querySelector(".end_popup");
+  const endPopup = document.querySelector('[data-name="endPopup"]');
 
   // Determine the winner based on scores
   if (playerScore === MAX_SCORE) {

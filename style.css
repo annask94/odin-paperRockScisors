@@ -4,6 +4,12 @@
   margin: 0;
 }
 
+:root {
+  --h1-font-size: clamp(2rem, 5vw, 3rem);
+  --h2-font-size: clamp(1.5rem, 4vw, 2rem);
+  --p-font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
 body {
   font-family: "Montserrat Alternates", sans-serif;
   background: linear-gradient(
@@ -12,11 +18,13 @@ body {
     rgba(255, 87, 87, 0.85) 50%,
     rgba(255, 189, 89, 1) 100%
   );
+  background-size: cover;
+  background-attachment: fixed;
 }
 .grid_container {
   display: grid;
   place-items: center;
-  height: 100dvh;
+  max-height: 100dvh;
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
@@ -30,15 +38,21 @@ button {
 header {
   text-align: center;
   color: white;
+  margin-bottom: 2rem;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: var(--h1-font-size);
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: var(--h2-font-size);
+  text-align: center;
+}
+
+p {
+  font-size: var(--p-font-size);
 }
 
 main {
@@ -49,6 +63,7 @@ main {
   padding: 4rem;
   box-shadow: 7px 7px 30px rgba(0, 0, 0, 0.5);
   border-radius: 30px;
+  max-width: 90vw;
 }
 
 img {
@@ -58,11 +73,11 @@ img {
 
 .play_btn {
   margin: 3rem 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.rps_btn {
-  margin: 1rem;
-}
 .rps_btn:hover {
   opacity: 70%;
 }
@@ -76,21 +91,31 @@ img {
   display: flex;
 }
 
-.round_choice_dynamic {
-  margin-left: 1rem;
-  margin-right: 1rem;
+.vs_element {
+  color: rgba(0, 151, 178, 1);
+}
+
+.round_choice {
+  display: flex;
+  gap: 1rem;
   margin-bottom: 1rem;
+}
+@media screen and (max-width: 430px) {
+  .round_choice {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .round_winner {
-  font-size: 2rem;
+  font-size: var(--h2-font-size);
   margin-top: 1rem;
   margin-bottom: 1rem;
   color: rgba(0, 151, 178, 1);
 }
 
 .game_score {
-  font-size: 4rem;
+  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: 700;
   margin-left: 1rem;
   margin-right: 1rem;
