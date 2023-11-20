@@ -2,7 +2,7 @@ let playerScore = 0;
 let computerScore = 0;
 const MAX_SCORE = 5;
 
-//Player Choice
+//PLAYER CHOICE
 
 const rpsButtons = document.querySelectorAll(".rps_btn");
 
@@ -10,7 +10,6 @@ rpsButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const playerChoice = button.getAttribute("data-name");
     const roundResult = playRound(playerChoice);
-    // console.log("Wynik rundy: ", roundResult);
   });
 });
 
@@ -54,23 +53,25 @@ function playRound(playerChoice) {
 }
 
 //STATS DISPLAY
-function updateGameStats(result) {
-  const playerChoiceDisplay = document.querySelector(
-    '[data-name="playerChoiceDisplay"]'
-  );
-  const computerChoiceDisplay = document.querySelector(
-    '[data-name="computerChoiceDisplay"]'
-  );
-  const roundWinnerDisplay = document.querySelector(
-    '[data-name="roundWinner"]'
-  );
-  const playerScoreDisplay = document.querySelector(
-    '[data-name="playerScoreDisplay"]'
-  );
-  const computerScoreDisplay = document.querySelector(
-    '[data-name="computerScoreDisplay"]'
-  );
 
+//SELECTORS
+
+const playerChoiceDisplay = document.querySelector(
+  '[data-name="playerChoiceDisplay"]'
+);
+const computerChoiceDisplay = document.querySelector(
+  '[data-name="computerChoiceDisplay"]'
+);
+const roundWinnerDisplay = document.querySelector('[data-name="roundWinner"]');
+const playerScoreDisplay = document.querySelector(
+  '[data-name="playerScoreDisplay"]'
+);
+const computerScoreDisplay = document.querySelector(
+  '[data-name="computerScoreDisplay"]'
+);
+
+// FUNCTION
+function updateGameStats(result) {
   playerChoiceDisplay.textContent = result.playerChoice;
   computerChoiceDisplay.textContent = result.computerChoice;
   roundWinnerDisplay.textContent = result.roundWinner;
@@ -81,17 +82,44 @@ function updateGameStats(result) {
     displayWinner();
   }
 }
-
+// DISPLAY WINNER
+//SELECTORS
+const endPopup = document.querySelector('[data-name="endPopup"]');
+//FUNCTION
 function displayWinner() {
   const gameWinnerDisplay = document.querySelector('[data-name="gameWinner"]');
-  const endPopup = document.querySelector('[data-name="endPopup"]');
 
-  // Determine the winner based on scores
+  rpsButtons.forEach((button) => {
+    button.disabled = true;
+  });
+
+  endPopup.style.cssText = "display:grid";
+  document.body.classList.add("active_popup");
+
   if (playerScore === MAX_SCORE) {
-    gameWinnerDisplay.textContent = "Congratulations! You won!";
+    gameWinnerDisplay.textContent = "You won!";
   } else if (computerScore === MAX_SCORE) {
     gameWinnerDisplay.textContent = "You lose";
   }
 }
 
-//DOPISAĆ FUNKCJĘ ZE ZMIANĄ STYLU I DOGRAĆ WYGLĄD MOBILNY
+//PLAY AGAIN
+
+const playAgainBtn = document.querySelector('[data-name="playAgainBtn"]');
+
+playAgainBtn.addEventListener("click", () => {
+  playerScore = 0;
+  computerScore = 0;
+
+  playerScoreDisplay.textContent = playerScore;
+  computerScoreDisplay.textContent = computerScore;
+  playerChoiceDisplay.textContent = "";
+  computerChoiceDisplay.textContent = "";
+  roundWinnerDisplay.textContent = "";
+
+  rpsButtons.forEach((button) => {
+    button.disabled = false;
+  });
+  document.body.classList.remove("active_popup");
+  endPopup.style.cssText = "display:none";
+});

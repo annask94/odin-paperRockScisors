@@ -127,23 +127,24 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 1rem;
+  padding: clamp(1rem, 2vw, 3rem);
   border-radius: 20px;
   display: none;
   align-items: center;
-  width: 60vw;
-  height: 50dvh;
+  width: auto;
+  height: auto;
   box-shadow: 7px 7px 30px rgba(0, 0, 0, 0.5);
 }
 
 .end_result {
   text-align: center;
-  font-size: 5rem;
+  font-size: clamp(1rem, 4vw, 5rem);
+  margin-bottom: 1rem;
 }
 
 .retry_btn {
   background-color: rgba(255, 87, 87, 1);
-  font-size: 2rem;
+  font-size: clamp(0.75rem, 3vw, 2rem);
   color: white;
   padding: 1rem;
   width: fit-content;
@@ -155,8 +156,9 @@ img {
   opacity: 70%;
 }
 
-body.active_popup header main {
-  opacity: 60%;
+body.active_popup header,
+body.active_popup main {
+  opacity: 0.6;
   filter: blur(5px);
   transition: filter 0ms ease-in-out 0ms;
 }
